@@ -1,0 +1,98 @@
+{
+    "repository": "juniorxsound/blender",
+    "title": "Blender Docker",
+    "author": "Or Fleisher <https://orfleisher.com>",
+    "env": [
+        "DEBIAN_FRONTEND noninteractive",
+        "LC_ALL C.UTF-8",
+        "LANG C.UTF-8"
+    ],
+    "deps": [
+        "wget",
+        "libopenexr-dev",
+        "bzip2",
+        "build-essential",
+        "zlib1g-dev",
+        "libxmu-dev",
+        "libxi-dev",
+        "libxxf86vm-dev",
+        "libfontconfig1",
+        "libxrender1",
+        "libgl1-mesa-glx"
+    ],
+    "images": [
+        {
+            "tag": "2.79-cpu-ubuntu18.04",
+            "base_os_image": "ubuntu:18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79-linux-glibc219-x86_64.tar.bz2",
+            "env": [
+                "PATH \"$PATH:/bin/2.79/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.79\"",
+                "BLENDERPIP \"/bin/2.79/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.79/python/bin/python3.7m\"",
+                "HW=\"CPU\""
+            ]
+        },
+        {
+            "tag": "2.79-gpu-ubuntu18.04",
+            "base_os_image": "nvidia/cudagl:10.1-base-ubuntu18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79-linux-glibc219-x86_64.tar.bz2",
+            "env": [
+                "PATH \"$PATH:/bin/2.79/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.79\"",
+                "BLENDERPIP \"/bin/2.79/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.79/python/bin/python3.7m\"",
+                "HW=\"GPU\""
+            ]
+        },
+        {
+            "tag": "2.80-cpu-ubuntu18.04",
+            "base_os_image": "ubuntu:18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.80/blender-2.80-linux-glibc217-x86_64.tar.bz2",
+            "env": [
+                "PATH \"$PATH:/bin/2.80/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.80\"",
+                "BLENDERPIP \"/bin/2.80/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.80/python/bin/python3.7m\"",
+                "HW=\"CPU\""
+            ]
+        },
+        {
+            "tag": "2.80-gpu-ubuntu18.04",
+            "base_os_image": "nvidia/cudagl:10.1-base-ubuntu18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.80/blender-2.80-linux-glibc217-x86_64.tar.bz2",
+            "env": [
+                "PATH \"$PATH:/bin/2.80/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.80\"",
+                "BLENDERPIP \"/bin/2.80/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.80/python/bin/python3.7m\"",
+                "HW=\"GPU\""
+            ]
+        },
+        {
+            "tag": "2.81-cpu-ubuntu18.04",
+            "base_os_image": "ubuntu:18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.81/blender-2.81-linux-glibc217-x86_64.tar.bz2",
+            "env": [
+                "PATH \"$PATH:/bin/2.81/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.81\"",
+                "BLENDERPIP \"/bin/2.81/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.81/python/bin/python3.7m\"",
+                "HW=\"CPU\""
+            ]
+        },
+        {
+            "tag": "2.81-gpu-ubuntu18.04",
+            "base_os_image": "nvidia/cudagl:10.1-base-ubuntu18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.81/blender-2.81-linux-glibc217-x86_64.tar.bz2",
+            "env": [
+                "PATH \"$PATH:/bin/2.81/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.81\"",
+                "BLENDERPIP \"/bin/2.81/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.81/python/bin/python3.7m\"",
+                "HW=\"GPU\""
+            ]
+        }
+    ]
+
+}
