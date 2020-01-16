@@ -16,6 +16,8 @@ FROM nytimes/blender:latest
 ```
 For all tags available see [Docker tags](#docker-tags)
 
+> If you are running a GPU image make sure you [follow and setup Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker)
+
 ## Docker tags
 - `nytimes/blender:latest` - Latest CPU image with latest Blender version
 - `nytimes/blender:latest-gpu` - Latest GPU image with latest Blender version
