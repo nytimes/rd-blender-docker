@@ -1,7 +1,7 @@
 {
-    "repository": "juniorxsound/blender",
-    "title": "Blender Docker",
-    "author": "Or Fleisher <https://orfleisher.com>",
+    "repository": "nytimes/blender",
+    "title": "Blender in Docker",
+    "author": "Or Fleisher <or.fleisher@nytimes.com>",
     "env": [
         "DEBIAN_FRONTEND noninteractive",
         "LC_ALL C.UTF-8",
