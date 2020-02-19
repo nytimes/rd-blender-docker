@@ -7,5 +7,4 @@ services:
 script:
   - python3 generate.py
 after_success:
-  - notify.sh
-  - ls
+  - ./notify.sh
