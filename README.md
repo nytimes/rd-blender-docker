@@ -31,4 +31,6 @@ For all tags available see [Docker tags](#docker-tags)
 To contribute a new image make sure you:
 - Add the image definition in the `manifest.json`
 - Add the image to this README in the [Docker tags](#docker-tags) section
-- Add image deploy and tag in the `.drone.yml` CI file
+- PR your change and if everything is builds we will deploy it Docker Hub
+
+> This repository is maintained by the Research & Development team at The New York Times and is not an official product. For more information about R&D at the Times visit [rd.nytimes.com](https://rd.nytimes.com)
