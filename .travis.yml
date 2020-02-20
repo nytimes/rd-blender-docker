@@ -6,5 +6,6 @@ services:
   - docker
 script:
   - python3 generate.py
+  - python3 build.py
 after_success:
   - bash ./notify.sh
