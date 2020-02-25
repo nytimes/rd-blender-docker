@@ -7,6 +7,6 @@ services:
 script:
   - python3 generate.py
   - python3 build.py
-  - docker login -u "$DOCKER_PASSWORD" -p "$DOCKER_USERNAME"
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 after_success:
   - bash ./notify.sh
