@@ -9,5 +9,10 @@ script:
   - python3 build.py
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push nytimes/blender:2.80-cpu-ubuntu18.04
+  - docker push nytimes/blender:2.80-gpu-ubuntu18.04
+  - docker push nytimes/blender:2.81-cpu-ubuntu18.04
+  - docker push nytimes/blender:2.81-gpu-ubuntu18.04
+  - docker tag nytimes/blender:2.81-gpu-ubuntu18.04 nytimes/blender:latest
+  - docker push nytimes/blender:latest
 after_success:
   - bash ./notify.sh
