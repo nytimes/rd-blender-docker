@@ -11,6 +11,7 @@
         "wget",
         "libopenexr-dev",
         "bzip2",
+        "xz-utils",
         "build-essential",
         "zlib1g-dev",
         "libxmu-dev",
@@ -66,6 +67,30 @@
                 "BLENDER_PATH \"/bin/2.81\"",
                 "BLENDERPIP \"/bin/2.81/python/bin/pip3\"",
                 "BLENDERPY \"/bin/2.81/python/bin/python3.7m\"",
+                "HW=\"GPU\""
+            ]
+        },
+        {
+            "tag": "2.82-cpu-ubuntu18.04",
+            "base_os_image": "ubuntu:18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.82/blender-2.82-linux64.tar.xz",
+            "env": [
+                "PATH \"$PATH:/bin/2.82/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.82\"",
+                "BLENDERPIP \"/bin/2.82/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.82/python/bin/python3.7m\"",
+                "HW=\"CPU\""
+            ]
+        },
+        {
+            "tag": "2.82-gpu-ubuntu18.04",
+            "base_os_image": "nvidia/cudagl:10.1-base-ubuntu18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.82/blender-2.82-linux64.tar.xz",
+            "env": [
+                "PATH \"$PATH:/bin/2.82/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.82\"",
+                "BLENDERPIP \"/bin/2.82/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.82/python/bin/python3.7m\"",
                 "HW=\"GPU\""
             ]
         }

@@ -62,14 +62,17 @@ def create_dockerfile(base_os: str,
         dockerfile += "\u0009{}{}\n".format(dependency, is_multiline)
     dockerfile += "\n"
 
+    archivetype = blender_download_url.split(".")[-1]
+    archiveflags = "xjvf" if archivetype == "bz2" else "xvf"
+
     dockerfile += "# Download and install Blender\n"
     dockerfile += "RUN wget {} \ \n".format(blender_download_url)
-    dockerfile += "\u0009&& tar -xvjf {} --strip-components=1 -C /bin \ \n".format(
-        blender_download_url.split("/")[-1])
+    dockerfile += "\u0009&& tar -{} {} --strip-components=1 -C /bin \ \n".format(
+        archiveflags, blender_download_url.split("/")[-1])
     dockerfile += "\u0009&& rm -rf {} \ \n".format(
         blender_download_url.split("/")[-1])
     dockerfile += "\u0009&& rm -rf {} \n\n".format(
-        blender_download_url.split("/")[-1].split(".tar.bz2")[0])
+        blender_download_url.split("/")[-1].split(".tar."+archivetype)[0])
 
     dockerfile += "# Download the Python source since it is not bundled with Blender\n"
     dockerfile += "RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz \ \n"
