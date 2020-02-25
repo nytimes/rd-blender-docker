@@ -8,5 +8,6 @@ script:
   - python3 generate.py
   - python3 build.py
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push nytimes/blender:2.80-cpu-ubuntu18.04  
 after_success:
   - bash ./notify.sh
