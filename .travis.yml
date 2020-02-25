@@ -2,10 +2,20 @@ language: python
 python:
   - "3.6"
 sudo: required
+branches:
+  only:
+  - master
 services:
   - docker
 script:
   - python3 generate.py
   - python3 build.py
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; fi
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:2.80-cpu-ubuntu18.04; fi
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:2.80-gpu-ubuntu18.04; fi
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:2.81-cpu-ubuntu18.04; fi
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:2.81-gpu-ubuntu18.04; fi
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker tag nytimes/blender:2.81-gpu-ubuntu18.04 nytimes/blender:latest; fi
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:latest; fi
 after_success:
   - bash ./notify.sh
