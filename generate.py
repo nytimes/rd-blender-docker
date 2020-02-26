@@ -57,13 +57,18 @@ def create_dockerfile(base_os: str,
 
     dockerfile += "# Install dependencies\n"
     dockerfile += "RUN apt-get update && apt-get install -y \ \n"
+
+    archivetype = blender_download_url.split(".")[-1]
+    archiveflags = "xjvf"
+    
+    if archivetype == "xz":
+        archiveflags = "xvf"
+        deps.append("xz-utils")
+
     for dependency, has_more in lookahead(deps):
         is_multiline = " \ " if has_more else ""
         dockerfile += "\u0009{}{}\n".format(dependency, is_multiline)
     dockerfile += "\n"
-
-    archivetype = blender_download_url.split(".")[-1]
-    archiveflags = "xjvf" if archivetype == "bz2" else "xvf"
 
     dockerfile += "# Download and install Blender\n"
     dockerfile += "RUN wget {} \ \n".format(blender_download_url)

@@ -11,7 +11,6 @@
         "wget",
         "libopenexr-dev",
         "bzip2",
-        "xz-utils",
         "build-essential",
         "zlib1g-dev",
         "libxmu-dev",
