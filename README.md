@@ -21,6 +21,9 @@ For all tags available see [Docker tags](#docker-tags)
 ## Docker tags
 - `nytimes/blender:latest` - Latest CPU image with latest Blender version
 - `nytimes/blender:latest-gpu` - Latest GPU image with latest Blender version
+### 2.82
+- `nytimes/blender:2.82-cpu-ubuntu18.04`
+- `nytimes/blender:2.82-gpu-ubuntu18.04`
 ### 2.81
 - `nytimes/blender:2.81-cpu-ubuntu18.04`
 - `nytimes/blender:2.81-gpu-ubuntu18.04`
