@@ -44,4 +44,13 @@ To contribute a new image make sure you:
 - Add the image to this README in the [Docker tags](#docker-tags) section
 - PR your change and if everything is builds we will deploy it Docker Hub
 
+## Running Blender with GUI on container
+(tested on linux system)
+After pulling the desired image you need to run container with the following command:
+
+`docker run --ipc=host -it --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw"  <IMAGE NAME>`
+
+If you want to use GPU support as well please setup Nvidia's container toolkit and just replace `docker` 
+with `nvidia-docker` for the previous command. 
+
 > This repository is maintained by the Research & Development team at The New York Times and is provided as-is for your own use. For more information about R&D at the Times visit [rd.nytimes.com](https://rd.nytimes.com)
