@@ -26,13 +26,15 @@ if __name__ == "__main__":
 
                 # Build the Docker image
                 os.system(
-                    "docker build ./ -f {}/Dockerfile -t nytimes/blender:{}".format(
+                    "docker build -q ./ -f {}/Dockerfile -t nytimes/blender:{}".format(
                         output_folder + image["tag"], image["tag"]
                     )
                 )
 
                 # Copy the README from root so it deploys to DockerHub
-                shutil.copy2("./README.md", output_folder + image["tag"])
+                if os.getenv("CI") != None:
+                    print("Copying README to Dockerfile folder on CI so it deploys to Docker Hub\n")
+                    shutil.copy2("./README.md", output_folder + image["tag"])
 
                 print(
                     "✔️ Built and tagged image nytimes/blender:{}".format(image["tag"])
