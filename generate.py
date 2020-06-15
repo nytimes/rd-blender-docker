@@ -80,11 +80,11 @@ def create_dockerfile(base_os: str,
         blender_download_url.split("/")[-1].split(".tar."+archivetype)[0])
 
     dockerfile += "# Download the Python source since it is not bundled with Blender\n"
-    dockerfile += "RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz \ \n"
-    dockerfile += "\u0009&& tar -xzf Python-3.6.8.tgz \ \n"
-    dockerfile += "\u0009&& cp Python-3.6.8/Include/* $BLENDER_PATH/python/include/python3.7m/ \ \n"
-    dockerfile += "\u0009&& rm -rf Python-3.6.8.tgz \ \n"
-    dockerfile += "\u0009&& rm -rf Python-3.6.8 \n\n"
+    dockerfile += "RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz \ \n"
+    dockerfile += "\u0009&& tar -xzf Python-3.7.0.tgz \ \n"
+    dockerfile += "\u0009&& cp -r Python-3.7.0/Include/* $BLENDER_PATH/python/include/python3.7m/ \ \n"
+    dockerfile += "\u0009&& rm -rf Python-3.7.0.tgz \ \n"
+    dockerfile += "\u0009&& rm -rf Python-3.7.0 \n\n"
 
     dockerfile += "# Blender comes with a super outdated version of numpy (which is needed for matplotlib / opencv) so override it with a modern one\n"
     dockerfile += "RUN rm -rf ${BLENDER_PATH}/python/lib/python3.7/site-packages/numpy \n\n"
