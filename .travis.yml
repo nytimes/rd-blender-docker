@@ -17,7 +17,9 @@ script:
   - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:2.81-gpu-ubuntu18.04; fi
   - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:2.82-cpu-ubuntu18.04; fi
   - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:2.82-gpu-ubuntu18.04; fi
-  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker tag  nytimes/blender:2.82-gpu-ubuntu18.04 nytimes/blender:latest; fi
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:2.83-cpu-ubuntu18.04; fi
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:2.83-gpu-ubuntu18.04; fi
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker tag  nytimes/blender:2.83-gpu-ubuntu18.04 nytimes/blender:latest; fi
   - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then docker push nytimes/blender:latest; fi
 after_success:
   - bash ./notify.sh
