@@ -68,6 +68,11 @@ def create_dockerfile(base_os: str,
     for dependency, has_more in lookahead(deps):
         is_multiline = " \ " if has_more else ""
         dockerfile += "\u0009{}{}\n".format(dependency, is_multiline)
+    
+    # Needed so xz-utils doesn't accumalate
+    if archivetype == "xz":
+        deps.pop()
+
     dockerfile += "\n"
 
     dockerfile += "# Download and install Blender\n"
