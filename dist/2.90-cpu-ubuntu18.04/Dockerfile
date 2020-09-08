@@ -10,10 +10,10 @@ LABEL Title="Blender in Docker"
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
-ENV PATH "$PATH:/bin/2.80/python/bin/"
-ENV BLENDER_PATH "/bin/2.80"
-ENV BLENDERPIP "/bin/2.80/python/bin/pip3"
-ENV BLENDERPY "/bin/2.80/python/bin/python3.7m"
+ENV PATH "$PATH:/bin/2.90/python/bin/"
+ENV BLENDER_PATH "/bin/2.90"
+ENV BLENDERPIP "/bin/2.90/python/bin/pip3"
+ENV BLENDERPY "/bin/2.90/python/bin/python3.7m"
 ENV HW="CPU"
 
 # Install dependencies
@@ -28,13 +28,14 @@ RUN apt-get update && apt-get install -y \
 	libxxf86vm-dev \ 
 	libfontconfig1 \ 
 	libxrender1 \ 
-	libgl1-mesa-glx
+	libgl1-mesa-glx \ 
+	xz-utils
 
 # Download and install Blender
-RUN wget https://mirror.clarkson.edu/blender/release/Blender2.80/blender-2.80-linux-glibc217-x86_64.tar.bz2 \ 
-	&& tar -xjvf blender-2.80-linux-glibc217-x86_64.tar.bz2 --strip-components=1 -C /bin \ 
-	&& rm -rf blender-2.80-linux-glibc217-x86_64.tar.bz2 \ 
-	&& rm -rf blender-2.80-linux-glibc217-x86_64 
+RUN wget https://mirror.clarkson.edu/blender/release/Blender2.90/blender-2.90.0-linux64.tar.xz \ 
+	&& tar -xvf blender-2.90.0-linux64.tar.xz --strip-components=1 -C /bin \ 
+	&& rm -rf blender-2.90.0-linux64.tar.xz \ 
+	&& rm -rf blender-2.90.0-linux64 
 
 # Download the Python source since it is not bundled with Blender
 RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz \ 
