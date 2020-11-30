@@ -140,6 +140,30 @@
                 "BLENDERPY \"/bin/2.90/python/bin/python3.7m\"",
                 "HW=\"GPU\""
             ]
+        },
+        {
+            "tag": "2.91-cpu-ubuntu18.04",
+            "base_os_image": "ubuntu:18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.91/blender-2.91.0-linux64.tar.xz",
+            "env": [
+                "PATH \"$PATH:/bin/2.91/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.91\"",
+                "BLENDERPIP \"/bin/2.91/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.91/python/bin/python3.7m\"",
+                "HW=\"CPU\""
+            ]
+        },
+        {
+            "tag": "2.91-gpu-ubuntu18.04",
+            "base_os_image": "nvidia/cudagl:10.1-base-ubuntu18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender2.91/blender-2.91.0-linux64.tar.xz",
+            "env": [
+                "PATH \"$PATH:/bin/2.91/python/bin/\"",
+                "BLENDER_PATH \"/bin/2.91\"",
+                "BLENDERPIP \"/bin/2.91/python/bin/pip3\"",
+                "BLENDERPY \"/bin/2.91/python/bin/python3.7m\"",
+                "HW=\"GPU\""
+            ]
         }
     ]
 
