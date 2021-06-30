@@ -16,10 +16,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.80-cpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.80-gpu-ubuntu18.04:
     image: plugins/docker
@@ -29,10 +29,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.80-gpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.81-cpu-ubuntu18.04:
     image: plugins/docker
@@ -42,10 +42,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.81-cpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.81-gpu-ubuntu18.04:
     image: plugins/docker
@@ -55,10 +55,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.81-gpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.82-cpu-ubuntu18.04:
     image: plugins/docker
@@ -68,10 +68,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.82-cpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.82-gpu-ubuntu18.04:
     image: plugins/docker
@@ -81,10 +81,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.82-gpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.83-cpu-ubuntu18.04:
     image: plugins/docker
@@ -94,10 +94,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.83-cpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.83-gpu-ubuntu18.04:
     image: plugins/docker
@@ -107,10 +107,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.83-gpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.90-cpu-ubuntu18.04:
     image: plugins/docker
@@ -120,10 +120,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.90-cpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.90-gpu-ubuntu18.04:
     image: plugins/docker
@@ -133,10 +133,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.90-gpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.91-cpu-ubuntu18.04:
     image: plugins/docker
@@ -146,10 +146,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.91-cpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.91-gpu-ubuntu18.04:
     image: plugins/docker
@@ -159,10 +159,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.91-gpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.92-cpu-ubuntu18.04:
     image: plugins/docker
@@ -172,10 +172,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.92-cpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.92-gpu-ubuntu18.04:
     image: plugins/docker
@@ -185,10 +185,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.92-gpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.93-cpu-ubuntu18.04:
     image: plugins/docker
@@ -198,10 +198,10 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags: 2.93-cpu-ubuntu18.04
     when:
       event: push
+      branch: master
 
   2.93-gpu-ubuntu18.04:
     image: plugins/docker
@@ -211,12 +211,12 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    dry_run: true
     tags:
       - 2.93-gpu-ubuntu18.04
       - latest
     when:
       event: push
+      branch: master
 
   notify:
     image: plugins/slack
@@ -234,4 +234,4 @@ pipeline:
     when:
       status: [success, failure]
       event: push
-    depends_on: [ 2.80-cpu-ubuntu18.04, 2.80-gpu-ubuntu18.04, 2.81-cpu-ubuntu18.04, 2.81-gpu-ubuntu18.04, 2.82-cpu-ubuntu18.04, 2.82-gpu-ubuntu18.04, 2.83-cpu-ubuntu18.04, 2.83-gpu-ubuntu18.04, 2.90-cpu-ubuntu18.04, 2.90-gpu-ubuntu18.04, 2.91-cpu-ubuntu18.04, 2.91-gpu-ubuntu18.04, 2.92-cpu-ubuntu18.04, 2.92-gpu-ubuntu18.04, 2.93-cpu-ubuntu18.04, 2.93-gpu-ubuntu18.04 ]
+      branch: master
