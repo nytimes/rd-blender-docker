@@ -10,10 +10,10 @@ LABEL Title="Blender in Docker"
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
-ENV PATH "$PATH:/bin/2.90/python/bin/"
-ENV BLENDER_PATH "/bin/2.90"
-ENV BLENDERPIP "/bin/2.90/python/bin/pip3"
-ENV BLENDERPY "/bin/2.90/python/bin/python3.7m"
+ENV PATH "$PATH:/bin/2.93/python/bin/"
+ENV BLENDER_PATH "/bin/2.93"
+ENV BLENDERPIP "/bin/2.93/python/bin/pip3"
+ENV BLENDERPY "/bin/2.93/python/bin/python3.9"
 ENV HW="GPU"
 
 # Install dependencies
@@ -32,20 +32,20 @@ RUN apt-get update && apt-get install -y \
 	xz-utils
 
 # Download and install Blender
-RUN wget https://mirror.clarkson.edu/blender/release/Blender2.90/blender-2.90.0-linux64.tar.xz \ 
-	&& tar -xvf blender-2.90.0-linux64.tar.xz --strip-components=1 -C /bin \ 
-	&& rm -rf blender-2.90.0-linux64.tar.xz \ 
-	&& rm -rf blender-2.90.0-linux64 
+RUN wget https://mirror.clarkson.edu/blender/release/Blender2.93/blender-2.93.0-linux-x64.tar.xz \ 
+	&& tar -xvf blender-2.93.0-linux-x64.tar.xz --strip-components=1 -C /bin \ 
+	&& rm -rf blender-2.93.0-linux-x64.tar.xz \ 
+	&& rm -rf blender-2.93.0-linux-x64 
 
 # Download the Python source since it is not bundled with Blender
-RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz \ 
-	&& tar -xzf Python-3.7.0.tgz \ 
-	&& cp -r Python-3.7.0/Include/* $BLENDER_PATH/python/include/python3.7m/ \ 
-	&& rm -rf Python-3.7.0.tgz \ 
-	&& rm -rf Python-3.7.0 
+RUN wget https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tgz \ 
+	&& tar -xzf Python-3.9.1.tgz \ 
+	&& cp -r Python-3.9.1/Include/* $BLENDER_PATH/python/include// \ 
+	&& rm -rf Python-3.9.1.tgz \ 
+	&& rm -rf Python-3.9.1 
 
 # Blender comes with a super outdated version of numpy (which is needed for matplotlib / opencv) so override it with a modern one
-RUN rm -rf ${BLENDER_PATH}/python/lib/python3.7m/site-packages/numpy 
+RUN rm -rf ${BLENDER_PATH}/python/lib//site-packages/numpy 
 
 # Must first ensurepip to install Blender pip3 and then new numpy
 RUN ${BLENDERPY} -m ensurepip && ${BLENDERPIP} install --upgrade pip && ${BLENDERPIP} install numpy

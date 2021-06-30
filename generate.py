@@ -38,6 +38,8 @@ def create_dockerfile(base_os: str,
                       env: list,
                       deps: list,
                       blender_download_url: str,
+                      python_download_url: str,
+                      python_version: str,
                       workdir: str) -> str:
     """
     Create a stringified Dockerfile based on arguments provided
@@ -60,7 +62,7 @@ def create_dockerfile(base_os: str,
 
     archivetype = blender_download_url.split(".")[-1]
     archiveflags = "xjvf"
-    
+
     if archivetype == "xz":
         archiveflags = "xvf"
         deps.append("xz-utils")
@@ -68,7 +70,7 @@ def create_dockerfile(base_os: str,
     for dependency, has_more in lookahead(deps):
         is_multiline = " \ " if has_more else ""
         dockerfile += "\u0009{}{}\n".format(dependency, is_multiline)
-    
+
     # Needed so xz-utils doesn't accumalate
     if archivetype == "xz":
         deps.pop()
@@ -85,14 +87,21 @@ def create_dockerfile(base_os: str,
         blender_download_url.split("/")[-1].split(".tar."+archivetype)[0])
 
     dockerfile += "# Download the Python source since it is not bundled with Blender\n"
-    dockerfile += "RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz \ \n"
-    dockerfile += "\u0009&& tar -xzf Python-3.7.0.tgz \ \n"
-    dockerfile += "\u0009&& cp -r Python-3.7.0/Include/* $BLENDER_PATH/python/include/python3.7m/ \ \n"
-    dockerfile += "\u0009&& rm -rf Python-3.7.0.tgz \ \n"
-    dockerfile += "\u0009&& rm -rf Python-3.7.0 \n\n"
+    dockerfile += "RUN wget {} \ \n".format(python_download_url)
+    dockerfile += "\u0009&& tar -xzf {} \ \n".format(
+        python_download_url.split("/")[-1])
+    dockerfile += "\u0009&& cp -r {}/Include/* $BLENDER_PATH/python/include/{}/ \ \n".format(
+        python_download_url.split("/")[-1].split('.tgz')[0],
+        python_version
+    )
+    dockerfile += "\u0009&& rm -rf {} \ \n".format(
+        python_download_url.split("/")[-1])
+    dockerfile += "\u0009&& rm -rf {} \n\n".format(
+        python_download_url.split("/")[-1].split('.tgz')[0])
 
     dockerfile += "# Blender comes with a super outdated version of numpy (which is needed for matplotlib / opencv) so override it with a modern one\n"
-    dockerfile += "RUN rm -rf ${BLENDER_PATH}/python/lib/python3.7/site-packages/numpy \n\n"
+    dockerfile += "RUN rm -rf {}/python/lib/{}/site-packages/numpy \n\n".format(
+        "${BLENDER_PATH}", python_version)
 
     dockerfile += "# Must first ensurepip to install Blender pip3 and then new numpy\n"
     dockerfile += "RUN ${BLENDERPY} -m ensurepip && ${BLENDERPIP} install --upgrade pip && ${BLENDERPIP} install numpy\n\n"
@@ -124,6 +133,8 @@ if __name__ == "__main__":
                 env=manifest["env"] + image["env"],
                 deps=manifest["deps"],
                 blender_download_url=image["blender_download_url"],
+                python_download_url=image["python_download_url"],
+                python_version=image["python_version"],
                 workdir="/"
             )
 
