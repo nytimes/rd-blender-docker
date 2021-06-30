@@ -1,13 +1,13 @@
 ---
 pipeline:
   generate:
-    image: python:3.5.1-alpine
+    image: python:3.8-slim
     commands:
       - python3 generate.py
     when:
       event: push
   build:
-    image: python:3.5.1-alpine
+    image: python:3.8-slim
     commands:
       - python3 build.py
     environment:
@@ -45,7 +45,7 @@ pipeline:
       event: push
       branch: master
   notify:
-    image: python:3.5.1-alpine
+    image: python:3.8-slim
     commands:
       - sh ./notify.sh
     when:
