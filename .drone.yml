@@ -1,0 +1,237 @@
+---
+pipeline:
+  generate:
+    image: python:3.8-slim
+    commands:
+      - python3 generate.py
+    when:
+      event: push
+
+  # Build and push image by image
+  2.80-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.80-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.80-cpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.80-gpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.80-gpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.80-gpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.81-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.81-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.81-cpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.81-gpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.81-gpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.81-gpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.82-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.82-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.82-cpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.82-gpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.82-gpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.82-gpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.83-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.83-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.83-cpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.83-gpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.83-gpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.83-gpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.90-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.90-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.90-cpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.90-gpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.90-gpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.90-gpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.91-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.91-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.91-cpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.91-gpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.91-gpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.91-gpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.92-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.92-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.92-cpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.92-gpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.92-gpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.92-gpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.93-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.93-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 2.93-cpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  2.93-gpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.93-gpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags:
+      - 2.93-gpu-ubuntu18.04
+      - latest
+    when:
+      event: push
+      branch: master
+
+  notify:
+    image: plugins/slack
+    username: Blender Docker Bot
+    icon_emoji: ":blender-3d:"
+    channel: rd-bots
+    webhook:
+      from_secret: slack_webhook
+    template: >
+      {{#success build.status}}
+        Build {{build.number}} for ${DRONE_BRANCH} on ${DRONE_REPO} succeeded :party-gopher: {{build.link}}
+      {{else}}
+        Build {{build.number}} for ${DRONE_BRANCH} on ${DRONE_REPO} failed! :doh: {{build.link}}
+      {{/success}}
+    when:
+      status: [success, failure]
+      event: push
+      branch: master
