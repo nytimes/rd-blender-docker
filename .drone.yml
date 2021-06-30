@@ -9,7 +9,7 @@ pipeline:
   build:
     image: docker:latest
     commands:
-      - python3 build.py
+      - python build.py
     environment:
       CI: "true"
     when:
