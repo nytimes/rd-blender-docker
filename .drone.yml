@@ -7,7 +7,7 @@ pipeline:
     when:
       event: push
   build:
-    image: python:3.8-slim
+    image: docker:latest
     commands:
       - python3 build.py
     environment:
@@ -45,8 +45,18 @@ pipeline:
       event: push
       branch: master
   notify:
-    image: python:3.8-slim
-    commands:
-      - sh ./notify.sh
+    image: plugins/slack
+    username: Blender Docker Bot
+    icon_emoji: ":blender-3d:"
+    channel: rd-bots
+    webhook:
+      from_secret: slack_webhook
+    template: >
+      {{#success build.status}}
+        Build {{build.number}} for ${DRONE_BRANCH} on ${DRONE_REPO} succeeded :party-gopher: {{build.link}}
+      {{else}}
+        Build {{build.number}} for ${DRONE_BRANCH} on ${DRONE_REPO} failed! :doh: {{build.link}}
+      {{/success}}
     when:
+      status: [ success, failure ]
       event: push
