@@ -1,0 +1,52 @@
+---
+pipeline:
+  generate:
+    image: python:3.5.1-alpine
+    commands:
+      - python3 generate.py
+    when:
+      event: push
+  build:
+    image: python:3.5.1-alpine
+    commands:
+      - python3 build.py
+    environment:
+      CI: "true"
+    when:
+      event: push
+  tag-and-push:
+    image: docker:latest
+    commands:
+      - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin; fi
+      - docker push nytimes/blender:2.80-cpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.80-gpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.81-cpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.81-gpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.82-cpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.82-gpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.83-cpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.83-gpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.90-cpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.90-gpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.91-cpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.91-gpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.92-cpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.92-gpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.93-cpu-ubuntu18.04; fi
+      - docker push nytimes/blender:2.93-gpu-ubuntu18.04; fi
+      - docker tag  nytimes/blender:2.93-gpu-ubuntu18.04 nytimes/blender:latest; fi
+      - docker push nytimes/blender:latest; fi
+    secrets:
+      - source: docker_username
+        target: DOCKER_USERNAME
+      - source: docker_password
+        target: DOCKER_PASSWORD
+    when:
+      event: push
+      branch: master
+  notify:
+    image: python:3.5.1-alpine
+    commands:
+      - sh ./notify.sh
+    when:
+      event: push
