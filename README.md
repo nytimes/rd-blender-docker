@@ -4,7 +4,7 @@
   <p>A collection of Docker containers for running Blender headless or distributed ✨</p>
   <img alt="Python version" src="https://img.shields.io/badge/python-3.6-blue.svg" />
   <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-yellow.svg" />
-  <a href="https://travis-ci.org/nytimes/rd-blender-docker"><img alt="Build status" src="https://travis-ci.org/nytimes/rd-blender-docker.svg?branch=master"></a><br/>
+  <a href="https://cloud.drone.io/nytimes/rd-blender-docker"><img alt="Build status" src="https://cloud.drone.io/api/badges/nytimes/rd-blender-docker/status.svg"></a><br/>
   •
     <a href="https://github.com/nytimes/rd-blender-docker/wiki">Wiki</a> 📝
     •
