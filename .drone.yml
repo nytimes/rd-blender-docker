@@ -6,45 +6,21 @@ pipeline:
       - python3 generate.py
     when:
       event: push
-  build:
-    image: docker:latest
-    commands:
-      - apk add --no-cache --update python3
-      - python3 build.py
-    environment:
-      CI: "true"
+
+  # Build and push image by image
+  2.80-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/2.80-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    dry_run: true
+    tags: 2.80-cpu-ubuntu18.04
     when:
       event: push
-  tag-and-push:
-    image: docker:latest
-    commands:
-      - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin; fi
-      - docker push nytimes/blender:2.80-cpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.80-gpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.81-cpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.81-gpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.82-cpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.82-gpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.83-cpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.83-gpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.90-cpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.90-gpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.91-cpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.91-gpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.92-cpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.92-gpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.93-cpu-ubuntu18.04; fi
-      - docker push nytimes/blender:2.93-gpu-ubuntu18.04; fi
-      - docker tag  nytimes/blender:2.93-gpu-ubuntu18.04 nytimes/blender:latest; fi
-      - docker push nytimes/blender:latest; fi
-    secrets:
-      - source: docker_username
-        target: DOCKER_USERNAME
-      - source: docker_password
-        target: DOCKER_PASSWORD
-    when:
-      event: push
-      branch: master
+
   notify:
     image: plugins/slack
     username: Blender Docker Bot
