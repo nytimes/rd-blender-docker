@@ -218,6 +218,34 @@ pipeline:
       event: push
       branch: master
 
+  3.0-cpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/3.0-cpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: 3.0-cpu-ubuntu18.04
+    when:
+      event: push
+      branch: master
+
+  3.0-gpu-ubuntu18.04:
+    image: plugins/docker
+    dockerfile: dist/3.0-gpu-ubuntu18.04/Dockerfile
+    repo: nytimes/blender
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags:
+      - 3.0-gpu-ubuntu18.04
+      - latest
+    when:
+      event: push
+      branch: master
+
   notify:
     image: plugins/slack
     username: Blender Docker Bot
