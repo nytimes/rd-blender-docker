@@ -20,6 +20,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.80-gpu-ubuntu18.04:
     image: plugins/docker
@@ -33,6 +35,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.81-cpu-ubuntu18.04:
     image: plugins/docker
@@ -46,6 +50,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.81-gpu-ubuntu18.04:
     image: plugins/docker
@@ -59,6 +65,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.82-cpu-ubuntu18.04:
     image: plugins/docker
@@ -72,6 +80,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.82-gpu-ubuntu18.04:
     image: plugins/docker
@@ -85,6 +95,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.83-cpu-ubuntu18.04:
     image: plugins/docker
@@ -98,6 +110,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.83-gpu-ubuntu18.04:
     image: plugins/docker
@@ -111,6 +125,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.90-cpu-ubuntu18.04:
     image: plugins/docker
@@ -124,6 +140,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.90-gpu-ubuntu18.04:
     image: plugins/docker
@@ -137,6 +155,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.91-cpu-ubuntu18.04:
     image: plugins/docker
@@ -150,6 +170,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.91-gpu-ubuntu18.04:
     image: plugins/docker
@@ -163,6 +185,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.92-cpu-ubuntu18.04:
     image: plugins/docker
@@ -176,6 +200,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.92-gpu-ubuntu18.04:
     image: plugins/docker
@@ -189,6 +215,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.93-cpu-ubuntu18.04:
     image: plugins/docker
@@ -202,6 +230,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   2.93-gpu-ubuntu18.04:
     image: plugins/docker
@@ -211,12 +241,12 @@ pipeline:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    tags:
-      - 2.93-gpu-ubuntu18.04
-      - latest
+    tags: 2.93-gpu-ubuntu18.04
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   3.0-cpu-ubuntu18.04:
     image: plugins/docker
@@ -230,6 +260,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   3.0-gpu-ubuntu18.04:
     image: plugins/docker
@@ -245,6 +277,8 @@ pipeline:
     when:
       event: push
       branch: master
+    depends_on:
+      - generate
 
   notify:
     image: plugins/slack
@@ -263,3 +297,22 @@ pipeline:
       status: [success, failure]
       event: push
       branch: master
+    depends_on:
+      - 2.80-cpu-ubuntu18.04
+      - 2.80-gpu-ubuntu18.04
+      - 2.81-cpu-ubuntu18.04
+      - 2.81-gpu-ubuntu18.04
+      - 2.82-cpu-ubuntu18.04
+      - 2.82-gpu-ubuntu18.04
+      - 2.83-cpu-ubuntu18.04
+      - 2.83-gpu-ubuntu18.04
+      - 2.90-cpu-ubuntu18.04
+      - 2.90-gpu-ubuntu18.04
+      - 2.91-gpu-ubuntu18.04
+      - 2.91-cpu-ubuntu18.04
+      - 2.92-gpu-ubuntu18.04
+      - 2.92-cpu-ubuntu18.04
+      - 2.93-gpu-ubuntu18.04
+      - 2.93-cpu-ubuntu18.04
+      - 3.0-gpu-ubuntu18.04
+      - 3.0-cpu-ubuntu18.04
