@@ -52,9 +52,9 @@ def create_dockerfile(base_os: str,
     dockerfile += "LABEL Author=\"{}\"\n".format(author)
     dockerfile += "LABEL Title=\"{}\"\n\n".format(title)
 
-    dockerfile += "# Enviorment variables\n"
-    for enviorment_variable in env:
-        dockerfile += "ENV {}\n".format(enviorment_variable)
+    dockerfile += "# Environment variables\n"
+    for environment_variable in env:
+        dockerfile += "ENV {}\n".format(environment_variable)
     dockerfile += "\n"
 
     dockerfile += "# Install dependencies\n"
