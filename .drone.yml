@@ -27,7 +27,7 @@ steps:
 
 trigger:
   branch: 
-    - feature/drone-parallel-build
+    - master
   event: 
     - push
 
@@ -60,7 +60,7 @@ steps:
 
 trigger:
   branch: 
-    - feature/drone-parallel-build
+    - master
   event: 
     - push
 
@@ -93,7 +93,7 @@ steps:
 
 trigger:
   branch: 
-    - feature/drone-parallel-build
+    - master
   event: 
     - push
 
@@ -126,7 +126,7 @@ steps:
 
 trigger:
   branch: 
-    - feature/drone-parallel-build
+    - master
   event: 
     - push
 
