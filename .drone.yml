@@ -93,7 +93,7 @@ steps:
 
 trigger:
   branch: 
-    - master
+    - feature/drone-parallel-build
   event: 
     - push
 
@@ -126,7 +126,7 @@ steps:
 
 trigger:
   branch: 
-    - master
+    - feature/drone-parallel-build
   event: 
     - push
 
@@ -615,24 +615,24 @@ steps:
       from_secret: slack_webhook
 
 depends_on:
-    - 2.80-cpu-ubuntu18.04
-    - 2.80-gpu-ubuntu18.04
-    - 2.81-cpu-ubuntu18.04
-    - 2.81-gpu-ubuntu18.04
-    - 2.82-cpu-ubuntu18.04
-    - 2.82-gpu-ubuntu18.04
-    - 2.83-cpu-ubuntu18.04
-    - 2.83-gpu-ubuntu18.04
-    - 2.90-cpu-ubuntu18.04
-    - 2.90-gpu-ubuntu18.04
-    - 2.91-gpu-ubuntu18.04
-    - 2.91-cpu-ubuntu18.04
-    - 2.92-gpu-ubuntu18.04
-    - 2.92-cpu-ubuntu18.04
-    - 2.93-gpu-ubuntu18.04
-    - 2.93-cpu-ubuntu18.04
-    - 3.0-gpu-ubuntu18.04
-    - 3.0-cpu-ubuntu18.04
+  - 2.80-cpu-ubuntu18.04
+  - 2.80-gpu-ubuntu18.04
+  - 2.81-cpu-ubuntu18.04
+  - 2.81-gpu-ubuntu18.04
+  - 2.82-cpu-ubuntu18.04
+  - 2.82-gpu-ubuntu18.04
+  - 2.83-cpu-ubuntu18.04
+  - 2.83-gpu-ubuntu18.04
+  - 2.90-cpu-ubuntu18.04
+  - 2.90-gpu-ubuntu18.04
+  - 2.91-gpu-ubuntu18.04
+  - 2.91-cpu-ubuntu18.04
+  - 2.92-gpu-ubuntu18.04
+  - 2.92-cpu-ubuntu18.04
+  - 2.93-gpu-ubuntu18.04
+  - 2.93-cpu-ubuntu18.04
+  - 3.0-gpu-ubuntu18.04
+  - 3.0-cpu-ubuntu18.04
 
 trigger:
   branch:
