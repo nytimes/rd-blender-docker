@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: default
+name: 2.80-cpu-ubuntu18.04
 
 platform:
   os: linux
@@ -12,16 +12,11 @@ steps:
   image: python:3.8-slim
   commands:
   - python3 generate.py
-  when:
-    event:
-    - push
 
 - name: 2.80-cpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.80-cpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -29,18 +24,32 @@ steps:
     tags: 2.80-cpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.80-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.80-gpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.80-gpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -48,18 +57,32 @@ steps:
     tags: 2.80-gpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.81-cpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.81-cpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.81-cpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -67,18 +90,32 @@ steps:
     tags: 2.81-cpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.81-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.81-gpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.81-gpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -86,18 +123,32 @@ steps:
     tags: 2.81-gpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.82-cpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.82-cpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.82-cpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -105,18 +156,32 @@ steps:
     tags: 2.82-cpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.82-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.82-gpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.82-gpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -124,18 +189,32 @@ steps:
     tags: 2.82-gpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.83-cpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.83-cpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.83-cpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -143,18 +222,32 @@ steps:
     tags: 2.83-cpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.83-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.83-gpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.83-gpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -162,18 +255,32 @@ steps:
     tags: 2.83-gpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.90-cpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.90-cpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.90-cpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -181,18 +288,32 @@ steps:
     tags: 2.90-cpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.90-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.90-gpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.90-gpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -200,18 +321,32 @@ steps:
     tags: 2.90-gpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.91-cpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.91-cpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.91-cpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -219,18 +354,32 @@ steps:
     tags: 2.91-cpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.91-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.91-gpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.91-gpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -238,18 +387,32 @@ steps:
     tags: 2.91-gpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.92-cpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.92-cpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.92-cpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -257,18 +420,32 @@ steps:
     tags: 2.92-cpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.92-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.92-gpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.92-gpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -276,18 +453,32 @@ steps:
     tags: 2.92-gpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.93-cpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.93-cpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.93-cpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -295,18 +486,32 @@ steps:
     tags: 2.93-cpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 2.93-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 2.93-gpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/2.93-gpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -314,18 +519,32 @@ steps:
     tags: 2.93-gpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 3.0-cpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 3.0-cpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/3.0-cpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -333,18 +552,32 @@ steps:
     tags: 3.0-cpu-ubuntu18.04
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
+
+---
+kind: pipeline
+name: 3.0-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
 
 - name: 3.0-gpu-ubuntu18.04
   pull: if-not-exists
   image: plugins/docker
   settings:
-    depends_on:
-    - generate
     dockerfile: dist/3.0-gpu-ubuntu18.04/Dockerfile
     password:
       from_secret: docker_password
@@ -354,18 +587,34 @@ steps:
     - latest
     username:
       from_secret: docker_username
-  when:
-    branch:
+
+trigger:
+  branch: 
     - master
-    event:
+  event: 
     - push
 
+---
+kind: pipeline
+name: notify
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
 - name: notify
   pull: if-not-exists
   image: plugins/slack
   settings:
     channel: rd-bots
-    depends_on:
+    icon_emoji: ":blender-3d:"
+    template: "{{#success build.status}}\n  Build {{build.number}} for ${DRONE_BRANCH} on ${DRONE_REPO} succeeded :party-gopher: {{build.link}}\n{{else}}\n  Build {{build.number}} for ${DRONE_BRANCH} on ${DRONE_REPO} failed! :doh: {{build.link}}\n{{/success}}\n"
+    username: Blender Docker Bot
+    webhook:
+      from_secret: slack_webhook
+
+depends_on:
     - 2.80-cpu-ubuntu18.04
     - 2.80-gpu-ubuntu18.04
     - 2.81-cpu-ubuntu18.04
@@ -384,16 +633,12 @@ steps:
     - 2.93-cpu-ubuntu18.04
     - 3.0-gpu-ubuntu18.04
     - 3.0-cpu-ubuntu18.04
-    icon_emoji: ":blender-3d:"
-    template: "{{#success build.status}}\n  Build {{build.number}} for ${DRONE_BRANCH} on ${DRONE_REPO} succeeded :party-gopher: {{build.link}}\n{{else}}\n  Build {{build.number}} for ${DRONE_BRANCH} on ${DRONE_REPO} failed! :doh: {{build.link}}\n{{/success}}\n"
-    username: Blender Docker Bot
-    webhook:
-      from_secret: slack_webhook
-  when:
-    branch:
-    - master
-    event:
-    - push
-    status:
-    - success
-    - failure
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  status:
+  - success
+  - failure
