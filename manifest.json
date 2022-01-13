@@ -261,7 +261,7 @@
         },
         {
             "tag": "3.0-gpu-ubuntu18.04",
-            "base_os_image": "nvidia/cudagl:10.1-base-ubuntu18.04",
+            "base_os_image": "nvidia/cudagl:11.3.0-base-ubuntu18.04",
             "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender3.0/blender-3.0.0-linux-x64.tar.xz",
             "python_download_url": "https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tgz",
             "python_version": "python3.9",
