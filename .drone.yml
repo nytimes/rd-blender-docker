@@ -582,9 +582,7 @@ steps:
     password:
       from_secret: docker_password
     repo: nytimes/blender
-    tags:
-    - 3.0-gpu-ubuntu18.04
-    - latest
+    tags: 3.0-gpu-ubuntu18.04
     username:
       from_secret: docker_username
 
