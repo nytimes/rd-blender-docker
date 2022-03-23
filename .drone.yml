@@ -582,8 +582,74 @@ steps:
     password:
       from_secret: docker_password
     repo: nytimes/blender
+    tags: 3.0-gpu-ubuntu18.04
+    username:
+      from_secret: docker_username
+
+trigger:
+  branch: 
+    - master
+  event: 
+    - push
+
+---
+kind: pipeline
+name: 3.1-cpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
+
+- name: 3.1-cpu-ubuntu18.04
+  pull: if-not-exists
+  image: plugins/docker
+  settings:
+    dockerfile: dist/3.1-cpu-ubuntu18.04/Dockerfile
+    password:
+      from_secret: docker_password
+    repo: nytimes/blender
+    tags: 3.1-cpu-ubuntu18.04
+    username:
+      from_secret: docker_username
+
+trigger:
+  branch: 
+    - master
+  event: 
+    - push
+
+---
+kind: pipeline
+name: 3.1-gpu-ubuntu18.04
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  pull: if-not-exists
+  image: python:3.8-slim
+  commands:
+  - python3 generate.py
+
+- name: 3.1-gpu-ubuntu18.04
+  pull: if-not-exists
+  image: plugins/docker
+  settings:
+    dockerfile: dist/3.1-gpu-ubuntu18.04/Dockerfile
+    password:
+      from_secret: docker_password
+    repo: nytimes/blender
     tags:
-    - 3.0-gpu-ubuntu18.04
+    - 3.1-gpu-ubuntu18.04
     - latest
     username:
       from_secret: docker_username
@@ -633,6 +699,8 @@ depends_on:
   - 2.93-cpu-ubuntu18.04
   - 3.0-gpu-ubuntu18.04
   - 3.0-cpu-ubuntu18.04
+  - 3.1-gpu-ubuntu18.04
+  - 3.1-cpu-ubuntu18.04
 
 trigger:
   branch:
