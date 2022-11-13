@@ -717,9 +717,14 @@ steps:
     repo: nytimes/blender
     tags:
     - 3.2-gpu-ubuntu18.04
-    - latest
     username:
       from_secret: docker_username
+
+trigger:
+  branch: 
+    - master
+  event: 
+    - push
 
 ---
 kind: pipeline
@@ -782,6 +787,7 @@ steps:
     - latest
     username:
       from_secret: docker_username
+
 trigger:
   branch: 
     - master
