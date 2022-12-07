@@ -787,6 +787,12 @@ steps:
     username:
       from_secret: docker_username
 
+trigger:
+  branch: 
+    - master
+  event: 
+    - push
+
 ---
 kind: pipeline
 name: 3.4.0-cpu-ubuntu18.04
@@ -848,12 +854,6 @@ steps:
     - latest
     username:
       from_secret: docker_username
-
-trigger:
-  branch: 
-    - master
-  event: 
-    - push
 
 ---
 kind: pipeline
