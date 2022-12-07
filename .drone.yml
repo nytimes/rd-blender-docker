@@ -784,7 +784,6 @@ steps:
     repo: nytimes/blender
     tags:
     - 3.3.1-gpu-ubuntu18.04
-    - latest
     username:
       from_secret: docker_username
 
