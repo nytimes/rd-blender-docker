@@ -356,6 +356,34 @@
                 "BLENDERPY \"/bin/3.3/python/bin/python3.10\"",
                 "HW=\"GPU\""
             ]
+        },
+                {
+            "tag": "3.4.0-cpu-ubuntu18.04",
+            "base_os_image": "ubuntu:18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender3.4/blender-3.4.0-linux-x64.tar.xz",
+            "python_download_url": "https://www.python.org/ftp/python/3.10.5/Python-3.10.5.tgz",
+            "python_version": "python3.10",
+            "env": [
+                "PATH \"$PATH:/bin/3.4/python/bin/\"",
+                "BLENDER_PATH \"/bin/3.4\"",
+                "BLENDERPIP \"/bin/3.4/python/bin/pip3\"",
+                "BLENDERPY \"/bin/3.4/python/bin/python3.10\"",
+                "HW=\"CPU\""
+            ]
+        },
+        {
+            "tag": "3.4.0-gpu-ubuntu18.04",
+            "base_os_image": "nvidia/cudagl:10.1-base-ubuntu18.04",
+            "blender_download_url": "https://mirror.clarkson.edu/blender/release/Blender3.4/blender-3.4.0-linux-x64.tar.xz",
+            "python_download_url": "https://www.python.org/ftp/python/3.10.5/Python-3.10.5.tgz",
+            "python_version": "python3.10",
+            "env": [
+                "PATH \"$PATH:/bin/3.4/python/bin/\"",
+                "BLENDER_PATH \"/bin/3.4\"",
+                "BLENDERPIP \"/bin/3.4/python/bin/pip3\"",
+                "BLENDERPY \"/bin/3.4/python/bin/python3.10\"",
+                "HW=\"GPU\""
+            ]
         }
     ]
 }
