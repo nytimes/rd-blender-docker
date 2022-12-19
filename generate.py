@@ -104,7 +104,7 @@ def create_dockerfile(base_os: str,
         "${BLENDER_PATH}", python_version)
 
     dockerfile += "# Must first ensurepip to install Blender pip3 and then new numpy\n"
-    dockerfile += "RUN ${BLENDERPY} -m ensurepip && ${BLENDERPIP} install --upgrade pip && ${BLENDERPIP} install numpy\n\n"
+    dockerfile += "RUN ${BLENDERPY} -m ensurepip && ${BLENDERPIP} install --upgrade pip && ${BLENDERPIP} install numpy==1.23.0\n\n"
 
     dockerfile += "# Set the working directory\n"
     dockerfile += "WORKDIR {}".format(workdir)
